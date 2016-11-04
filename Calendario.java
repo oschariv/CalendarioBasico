@@ -42,5 +42,27 @@ public class Calendario
         anno = z;
     }
     
+    /**
+     * metodo para avanzar un dia a la fecha,
+     * debe cambiar de mes y anno cuando corresponda
+     * 
+     * Los meses son de 30 dias!
+     */
+    
+    public void avanzarFecha()
+    {
+        dia = dia + 1;
+        if (dia == 31){
+            mes = mes + 1;
+            dia = 1;
+            if (mes == 13){
+                anno = anno + 1;
+                mes = 1;
+                if (anno == 100){
+                    anno = 1;
+                }
+            }
+        }
+    }
     
 }
