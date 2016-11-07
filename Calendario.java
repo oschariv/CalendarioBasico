@@ -65,4 +65,38 @@ public class Calendario
         }
     }
     
+    /**
+     * Crear metodo para mostra la fecha como texto
+     */
+    public String mostrarFecha() {
+        
+        String textoDevolver;
+
+        String diaTexto;
+        if (dia < 10){
+            diaTexto = "0" + dia;
+        }
+        else{
+            diaTexto = dia + "";
+        }
+        
+        String mesTexto;
+        if (mes < 10){
+            mesTexto = "0" + mes;
+        }
+        else{
+            mesTexto = mes + "";
+        }
+        
+        String annoTexto;
+        if (anno < 10){
+            annoTexto = "0" + anno;
+        }
+        else{
+            annoTexto = anno + "";
+        }
+        
+        textoDevolver = "" + diaTexto + "-" + mesTexto + "-" + annoTexto;
+        return textoDevolver;
+    }
 }
