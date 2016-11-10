@@ -5,27 +5,27 @@
  * y obtener la fecha como String (Cadena de Caracteres).
  * 
  * @oschariv (Oscar Charro Rivera) 
- * @0.0.1 (11/04/2016)
+ * @0.0.2 (07/11/2016)
  */
 public class Calendario
 {
     // Declara dia
-    private int dia;
+    private DisplayDosDigitos dia;
     // Declara mes
-    private int mes;
+    private DisplayDosDigitos mes;
     // Declara anno
-    private int anno;
+    private DisplayDosDigitos anno;
     /**
      * Constructor del calendario, se inicializan las varibles a 1.
      */
     public Calendario()
     {
-        //inicializamos dia a 1
-        dia = 1;
-        //inicializamos mes a 1
-        mes = 1;
-        //inicializadmos anno a 1
-        anno = 1;
+        //inicializamos dia al limite 31
+        dia = new DisplayDosDigitos(31);
+        //inicializamos mes al limite 13
+        mes = new DisplayDosDigitos(13);
+        //inicializadmos anno al limite 100
+        anno = new DisplayDosDigitos(100);
     }
 
     /**
@@ -35,11 +35,11 @@ public class Calendario
     public void establecerFecha(int x, int y, int z)
     {
         // igualamos los valores introducidos
-        dia = x;
+        dia.setValor(x);
         
-        mes = y;
+        mes.setValor(y);
         
-        anno = z;
+        anno.setValor(z);
     }
     
     /**
@@ -51,17 +51,13 @@ public class Calendario
     
     public void avanzarFecha()
     {
-        dia = dia + 1;
-        if (dia == 31){
-            mes = mes + 1;
-            dia = 1;
-            if (mes == 13){
-                anno = anno + 1;
-                mes = 1;
-                if (anno == 100){
-                    anno = 1;
-                }
+        dia.incrementaValor();
+        if (dia.getValor() == 1){
+            mes.incrementaValor();                        
+            if (mes.getValor() == 1){
+                anno.incrementaValor();
             }
+            
         }
     }
     
@@ -69,34 +65,7 @@ public class Calendario
      * Crear metodo para mostra la fecha como texto
      */
     public String mostrarFecha() {
-        
-        String textoDevolver;
-
-        String diaTexto;
-        if (dia < 10){
-            diaTexto = "0" + dia;
-        }
-        else{
-            diaTexto = dia + "";
-        }
-        
-        String mesTexto;
-        if (mes < 10){
-            mesTexto = "0" + mes;
-        }
-        else{
-            mesTexto = mes + "";
-        }
-        
-        String annoTexto;
-        if (anno < 10){
-            annoTexto = "0" + anno;
-        }
-        else{
-            annoTexto = anno + "";
-        }
-        
-        textoDevolver = "" + diaTexto + "-" + mesTexto + "-" + annoTexto;
-        return textoDevolver;
+        return dia.getValorDelDisplay() + "-" + mes.getValorDelDisplay() 
+               + "-" + anno.getValorDelDisplay();
     }
 }
